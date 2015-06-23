@@ -47,13 +47,13 @@ class Affine < ClassicalCypher
 	protected
 
 	def encode(ptext)
-		ctext = CypherTools.substitute(ptext) {|ch| sub_char(ch)}
+		ctext = CypherTools::Text.substitute(ptext) {|ch| sub_char(ch)}
 
 		ctext
 	end	
 
 	def decode(ctext)
-		ptext = CypherTools.substitute(ctext) {|ch| backsub_char(ch)}
+		ptext = CypherTools::Text.substitute(ctext) {|ch| backsub_char(ch)}
 
 		ptext
 	end

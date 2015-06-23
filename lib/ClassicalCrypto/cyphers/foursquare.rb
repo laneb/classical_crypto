@@ -53,7 +53,7 @@ class FourSquare < ClassicalCypher
 
 
 		def self.random
-			self.new CypherTools.jumble_alpha, CypherTools.jumble_alpha
+			self.new CypherTools::Text.jumble_alpha, CypherTools::Text.jumble_alpha
 		end
 
 	end
@@ -69,14 +69,14 @@ class FourSquare < ClassicalCypher
 			filledPtext = ptext + CypherTools::GARBAGE_CH
 		end
 
-		ctext = CypherTools.substitute(filledPtext, 2) {|pair| key.table.sub_pair(pair)}
+		ctext = CypherTools::Text.substitute(filledPtext, 2) {|pair| key.table.sub_pair(pair)}
 
 		ctext
 	end
 
 	def decode(ctext)
 		raise ArgumentError, "cyphertext must be of even length" unless ctext.length.even?
-		ptext = CypherTools.substitute(ctext, 2) {|pair| key.table.backsub_pair(pair)}
+		ptext = CypherTools::Text.substitute(ctext, 2) {|pair| key.table.backsub_pair(pair)}
 	end
 
 

@@ -91,8 +91,8 @@ class Adfgvx < ClassicalCypher
 		def self.random
 			permLen = 2*Random.rand( (MinPermLength/2)..(MaxPermLength/2) )
 
-			phrase = CypherTools.jumble_alnum		
-			perm = CypherTools.rand_perm permLen
+			phrase = CypherTools::Text.jumble_alnum		
+			perm = CypherTools::Text.rand_perm permLen
 			
 			self.new(phrase, perm)
 		end
@@ -108,10 +108,10 @@ class Adfgvx < ClassicalCypher
 		permLength = key.perm.length #must be even
 		substitutedTextLength = 2*ptext.length
 		numOfLettersToFill = ((permLength  -  (substitutedTextLength % permLength)) % permLength ) /2
-		filledPtext = ptext + CypherTools.garbage_alnum(numOfLettersToFill) 
-		substitutedText = CypherTools.substitute(filledPtext) {|ch| key.table.sub_char(ch)}
+		filledPtext = ptext + CypherTools::Text.garbage_alnum(numOfLettersToFill) 
+		substitutedText = CypherTools::Text.substitute(filledPtext) {|ch| key.table.sub_char(ch)}
 
-		ctext = CypherTools.transpose(substitutedText, key.perm)
+		ctext = CypherTools::Text.transpose(substitutedText, key.perm)
 
 		ctext
 	end
@@ -127,9 +127,9 @@ class Adfgvx < ClassicalCypher
 		end
 
 
-		invTransposedText = CypherTools.inv_transpose(ctext, key.perm)
+		invTransposedText = CypherTools::Text.inv_transpose(ctext, key.perm)
 
-		ptext = CypherTools.substitute(invTransposedText, 2) {|pair| key.table.backsub_pair(pair)}
+		ptext = CypherTools::Text.substitute(invTransposedText, 2) {|pair| key.table.backsub_pair(pair)}
 
 		ptext
 	end

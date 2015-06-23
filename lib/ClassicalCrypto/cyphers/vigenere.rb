@@ -13,13 +13,13 @@ class Vigenere < ClassicalCypher
 		attr_reader :shift
 
 		def initialize(phrase)
-			@shift = CypherTools.only_alpha(phrase).downcase
+			@shift = CypherTools::Text.only_alpha(phrase).downcase
 			super(@shift)
 		end
 
 		def self.random
 			randLength = RandLenMin + rand(RandLenMax - RandLenMin)
-			self.new(CypherTools.garbage_alpha(randLength))
+			self.new(CypherTools::Text.garbage_alpha(randLength))
 		end
 		
 	end
@@ -37,13 +37,13 @@ class Vigenere < ClassicalCypher
 		
 		klen = 	key.shift.length
 
-		CypherTools.substitute(ptext, klen) do |textSeg|
+		CypherTools::Text.substitute(ptext, klen) do |textSeg|
 			textChrs = textSeg.chars
 			shiftChrs = @key.shift.chars
 			
 			newTextAry = textChrs.zip(shiftChrs).map do |txtCh, shiftCh|
 				shiftNum = shiftCh.ord - 'a'.ord
-				CypherTools.shift_alpha(txtCh, shiftNum)
+				CypherTools::Text.shift_alpha(txtCh, shiftNum)
 			end 
 			
 			newTextAry.join
@@ -54,13 +54,13 @@ class Vigenere < ClassicalCypher
 	def decode(ctext)
 		klen = key.shift.length
 
-		CypherTools.substitute(ctext, klen) do |textSeg|
+		CypherTools::Text.substitute(ctext, klen) do |textSeg|
 			textChrs = textSeg.chars
 			shiftChrs = @key.shift.chars
 
 			newTextAry = textChrs.zip(shiftChrs).map do |txtCh, shiftCh| 
 				shiftNum = shiftCh.ord - 'a'.ord
-				CypherTools.shift_alpha(txtCh, -shiftNum)
+				CypherTools::Text.shift_alpha(txtCh, -shiftNum)
 			end
 
 			newTextAry.join

@@ -62,7 +62,7 @@ class Playfair < ClassicalCypher
 		end
 
 		def self.random
-			self.new CypherTools.jumble_alpha
+			self.new CypherTools::Text.jumble_alpha
 		end
 	end
 
@@ -75,14 +75,14 @@ class Playfair < ClassicalCypher
 	def encode(ptext)
 		filledPtext = insert_filler(ptext)
 		
-		ctext = CypherTools.substitute(filledPtext, 2) {|pair| key.table.sub_pair(pair)}
+		ctext = CypherTools::Text.substitute(filledPtext, 2) {|pair| key.table.sub_pair(pair)}
 	
 		ctext
 	end
 
 
 	def decode(ctext)
-		ptext = CypherTools.substitute(ctext, 2) {|pair| key.table.backsub_pair(pair)}
+		ptext = CypherTools::Text.substitute(ctext, 2) {|pair| key.table.backsub_pair(pair)}
 
 		ptext
 	end

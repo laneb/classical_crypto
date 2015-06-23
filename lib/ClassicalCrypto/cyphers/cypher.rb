@@ -59,7 +59,7 @@ class ClassicalCypher
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	def encrypt(ptext)
-		encode(CypherTools.only_alnum(ptext.downcase)).upcase
+		encode(CypherTools::Text.only_alnum(ptext.downcase)).upcase
 	end 
 
 
@@ -73,7 +73,7 @@ class ClassicalCypher
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	def decrypt(ctext)
-		decode(CypherTools.only_alnum(ctext.upcase)).downcase
+		decode(CypherTools::Text.only_alnum(ctext.upcase)).downcase
 	end
 
 
@@ -96,7 +96,7 @@ module PureAlphabeticPlaintext
 	def encrypt(ptext)
 		if ptext.match /\d/ then raise ArgumentError, "plaintext may not include numbers" end
 
-		encode(CypherTools.only_alpha(ptext.downcase)).upcase
+		encode(CypherTools::Text.only_alpha(ptext.downcase)).upcase
 	end 
 
 end
