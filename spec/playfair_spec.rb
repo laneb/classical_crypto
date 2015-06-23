@@ -1,5 +1,5 @@
-require "./general_cypher_spec.rb"
-require "#{CYPHERDIR}/playfair.rb"
+require_relative "./general_cypher_spec.rb"
+require_relative "#{CYPHERDIR}/playfair.rb"
 
 pTextsCtextsAndNewPtextsByKey = {
 	

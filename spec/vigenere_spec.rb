@@ -1,5 +1,5 @@
-require "./general_cypher_spec.rb"
-require "#{CYPHERDIR}/vigenere.rb"
+require_relative "./general_cypher_spec.rb"
+require_relative "#{CYPHERDIR}/vigenere.rb"
 
 pTextsCtextsAndNewPtextsByKey = {
 	"aaaaa" => [
