@@ -2,7 +2,7 @@ require_relative "../util/cyphertools.rb"
 require_relative "./cypher.rb"
 
 
-class Affine < ClassicalCypher
+class Affine < Cypher
 
 	require_relative "affine/affine_key.rb"
 

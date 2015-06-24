@@ -13,7 +13,7 @@ require_relative "../util/cyphertools.rb"
 #~~will be visible to the user. Cypher also manages case and whitespace problems.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-class ClassicalCypher
+class Cypher
 
 	require_relative "cypher/key.rb"
 

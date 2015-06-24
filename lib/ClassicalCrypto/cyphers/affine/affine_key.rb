@@ -2,7 +2,7 @@ require_relative "../../util/cyphertools.rb"
 require_relative "../cypher.rb"
 
 class Affine
-	class AffineKey < ClassicalCypher::Key
+	class AffineKey < Cypher::Key
 
 		MAX_RAND_COEFF = 100
 		ALPHA_MODULUS = 26

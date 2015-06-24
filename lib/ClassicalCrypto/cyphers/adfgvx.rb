@@ -11,7 +11,7 @@ require_relative "../util/cyphertools.rb"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-class Adfgvx < ClassicalCypher
+class Adfgvx < Cypher
 
 	require_relative "adfgvx/adfgvx_key.rb"
 

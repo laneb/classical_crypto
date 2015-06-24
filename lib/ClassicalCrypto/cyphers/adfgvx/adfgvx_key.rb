@@ -1,10 +1,11 @@
 require_relative "../../util/cyphertools.rb"
+require_relative "../cypher.rb"
 
 class Adfgvx
 
 	require_relative "adfgvx_table.rb"
 
-	class AdfgvxKey < ClassicalCypher::Key
+	class AdfgvxKey < Cypher::Key
 	
 		attr_reader :table, :perm
 
