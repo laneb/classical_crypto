@@ -14,7 +14,7 @@ require_relative "../util/cyphertools.rb"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-class AdfgvxTable < CypherTools::AlnumTable
+class AdfgvxTable < CypherTools::Tables::AlnumTable
 
 	ADFGVX = "ADFGVX"	
 	

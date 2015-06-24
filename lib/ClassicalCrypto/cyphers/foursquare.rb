@@ -8,11 +8,11 @@ class FourSquareTable
 
 	include PureAlphabeticPlaintext
 
-	ALPHA = CypherTools::AlphaTable.new
+	ALPHA = CypherTools::Tables::AlphaTable.new
 
 	def initialize(phrase1, phrase2)
-		@code_table1 = CypherTools::AlphaTable.new(phrase1)
-		@code_table2 = CypherTools::AlphaTable.new(phrase2)
+		@code_table1 = CypherTools::Tables::AlphaTable.new(phrase1)
+		@code_table2 = CypherTools::Tables::AlphaTable.new(phrase2)
 	end
 
 

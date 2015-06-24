@@ -2,7 +2,7 @@ require_relative "../util/cyphertools.rb"
 require_relative "./cypher.rb"
 
 
-class PlayfairTable < CypherTools::AlphaTable
+class PlayfairTable < CypherTools::Tables::AlphaTable
 
 	def sub_pair(pair)
 
