@@ -8,7 +8,7 @@ require_relative "./cypher.rb"
 
 class FourSquare < Cypher
 
-	include PureAlphabeticPlaintext
+	include Cypher::PureAlphabeticPlaintext
 
 	require_relative "foursquare/foursquare_key.rb"
 

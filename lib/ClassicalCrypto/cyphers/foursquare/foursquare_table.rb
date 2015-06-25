@@ -3,8 +3,6 @@ require_relative "../../util/cyphertools.rb"
 class FourSquare
 	class FourSquareTable
 
-		include PureAlphabeticPlaintext
-
 		ALPHA = CypherTools::Tables::AlphaTable.new
 
 		def initialize(phrase1, phrase2)

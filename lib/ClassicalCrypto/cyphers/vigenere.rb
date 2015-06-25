@@ -9,7 +9,7 @@ class Vigenere < Cypher
 	
 	set_key_type_to VigenereKey
 	
-	include PureAlphabeticPlaintext
+	include Cypher::PureAlphabeticPlaintext
 
 	
 

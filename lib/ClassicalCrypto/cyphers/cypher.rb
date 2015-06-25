@@ -3,7 +3,6 @@ require_relative "../util/cyphertools.rb"
 
 
 
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~Class: Cypher
 #~~Constructor: Cyper.new(key_part, )
@@ -47,6 +46,9 @@ class Cypher
 	end 
 
 
+	require_relative "cypher/pure_alphabetic_plaintext.rb"
+
+
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#~~Method: decrypt(ctext)
 	#
@@ -72,15 +74,4 @@ class Cypher
 		@keyType
 	end
 	
-end
-
-
-module PureAlphabeticPlaintext
-
-	def encrypt(ptext)
-		if ptext.match /\d/ then raise ArgumentError, "plaintext may not include numbers" end
-
-		encode(CypherTools::Text.only_alpha(ptext.downcase)).upcase
-	end 
-
 end

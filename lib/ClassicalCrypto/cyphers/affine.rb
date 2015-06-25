@@ -8,7 +8,7 @@ class Affine < Cypher
 
 	set_key_type_to AffineKey
 
-	include PureAlphabeticPlaintext
+	include Cypher::PureAlphabeticPlaintext
 
 	protected
 

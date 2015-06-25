@@ -4,7 +4,7 @@ require_relative "./cypher.rb"
 
 class Playfair < Cypher	
 
-	include PureAlphabeticPlaintext
+	include Cypher::PureAlphabeticPlaintext
 
 	require_relative "playfair/playfair_key.rb"
 
