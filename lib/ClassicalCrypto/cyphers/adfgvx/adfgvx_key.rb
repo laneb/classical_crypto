@@ -1,11 +1,11 @@
-require_relative "../../util/cyphertools.rb"
+require_relative "../../utils.rb"
 require_relative "../cypher.rb"
 
-class Adfgvx
+class ClassicalCrypto::Cyphers::Adfgvx
 
 	require_relative "adfgvx_table.rb"
 
-	class AdfgvxKey < Cypher::Key
+	class AdfgvxKey < Key
 	
 		attr_reader :table, :perm
 
@@ -34,8 +34,8 @@ class Adfgvx
 		def self.random
 			permLen = 2*Random.rand( (MinPermLength/2)..(MaxPermLength/2) )
 
-			phrase = CypherTools::Text.jumble_alnum		
-			perm = CypherTools::Text.rand_perm permLen
+			phrase = ClassicalCrypto::Utils::Text.jumble_alnum		
+			perm = ClassicalCrypto::Utils::Text.rand_perm permLen
 			
 			self.new(phrase, perm)
 		end

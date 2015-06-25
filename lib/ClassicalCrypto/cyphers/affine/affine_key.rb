@@ -1,8 +1,8 @@
-require_relative "../../util/cyphertools.rb"
+require_relative "../../utils.rb"
 require_relative "../cypher.rb"
 
-class Affine
-	class AffineKey < Cypher::Key
+class ClassicalCrypto::Cyphers::Affine
+	class AffineKey < Key
 
 		MAX_RAND_COEFF = 100
 		ALPHA_MODULUS = 26
@@ -20,14 +20,14 @@ class Affine
 	 
 			@coeff = coeff
 			@const = const
-			@inv_coeff = CypherTools::Math.mod_inv(coeff, ALPHA_MODULUS)
+			@inv_coeff = ClassicalCrypto::Utils::Math.mod_inv(coeff, ALPHA_MODULUS)
 			super(@coeff, @const)
 		end
 
 		def self.random
 			
 			coeff = ALPHA_MODULUS
-			until CypherTools::Math.coprime? ALPHA_MODULUS, coeff do 
+			until ClassicalCrypto::Utils::Math.coprime? ALPHA_MODULUS, coeff do 
 				coeff = rand(MAX_RAND_COEFF) 
 			end
 			

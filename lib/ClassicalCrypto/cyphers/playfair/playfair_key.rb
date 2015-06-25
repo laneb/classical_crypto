@@ -1,11 +1,11 @@
-require_relative "../../util/cyphertools.rb"
+require_relative "../../utils.rb"
 require_relative "../cypher.rb"
 
-class Playfair
+class ClassicalCrypto::Cyphers::Playfair
 
 	require_relative "playfair_table.rb"
 
-	class PlayfairKey < Cypher::Key
+	class PlayfairKey < Key
 
 		attr_reader :table
 
@@ -20,7 +20,7 @@ class Playfair
 		end
 
 		def self.random
-			self.new CypherTools::Text.jumble_alpha
+			self.new ClassicalCrypto::Utils::Text.jumble_alpha
 		end
 	end
 end

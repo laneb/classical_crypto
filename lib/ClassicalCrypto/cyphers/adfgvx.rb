@@ -1,5 +1,5 @@
 require_relative "./cypher.rb"
-require_relative "../util/cyphertools.rb"
+require_relative "../utils.rb"
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -10,48 +10,49 @@ require_relative "../util/cyphertools.rb"
 #~~accessible methods.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+module ClassicalCrypto::Cyphers
+	class Adfgvx < Cypher
 
-class Adfgvx < Cypher
+		require_relative "adfgvx/adfgvx_key.rb"
 
-	require_relative "adfgvx/adfgvx_key.rb"
+		set_key_type_to AdfgvxKey
 
-	set_key_type_to AdfgvxKey
-
-	protected
-
-
-	def encode(ptext)
-
-		permLength = key.perm.length #must be even
-		substitutedTextLength = 2*ptext.length
-		numOfLettersToFill = ((permLength  -  (substitutedTextLength % permLength)) % permLength ) /2
-		filledPtext = ptext + CypherTools::Text.garbage_alnum(numOfLettersToFill) 
-		substitutedText = CypherTools::Text.substitute(filledPtext) {|ch| key.table.sub_char(ch)}
-
-		ctext = CypherTools::Text.transpose(substitutedText, key.perm)
-
-		ctext
-	end
+		protected
 
 
-	def decode(ctext)
-		unless ctext.length.even?
-			raise ArgumentError, "cyphertext must be of even length"
-		end
+		def encode(ptext)
 
-		if ctext.match /[^ADFGVX]/
-			raise 	ArgumentError, "cyphertext may only include the characters ADFGVX"
+			permLength = key.perm.length #must be even
+			substitutedTextLength = 2*ptext.length
+			numOfLettersToFill = ((permLength  -  (substitutedTextLength % permLength)) % permLength ) /2
+			filledPtext = ptext + ClassicalCrypto::Utils::Text.garbage_alnum(numOfLettersToFill) 
+			substitutedText = ClassicalCrypto::Utils::Text.substitute(filledPtext) {|ch| key.table.sub_char(ch)}
+
+			ctext = ClassicalCrypto::Utils::Text.transpose(substitutedText, key.perm)
+
+			ctext
 		end
 
 
-		invTransposedText = CypherTools::Text.inv_transpose(ctext, key.perm)
+		def decode(ctext)
+			unless ctext.length.even?
+				raise ArgumentError, "cyphertext must be of even length"
+			end
 
-		ptext = CypherTools::Text.substitute(invTransposedText, 2) {|pair| key.table.backsub_pair(pair)}
+			if ctext.match /[^ADFGVX]/
+				raise 	ArgumentError, "cyphertext may only include the characters ADFGVX"
+			end
 
-		ptext
+
+			invTransposedText = ClassicalCrypto::Utils::Text.inv_transpose(ctext, key.perm)
+
+			ptext = ClassicalCrypto::Utils::Text.substitute(invTransposedText, 2) {|pair| key.table.backsub_pair(pair)}
+
+			ptext
+		end
 	end
 end
-	
+		
 
 
 

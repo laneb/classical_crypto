@@ -1,37 +1,38 @@
-require_relative "../util/cyphertools.rb"
+require_relative "../utils.rb"
 require_relative "./cypher.rb"
 
 
 
 
 
+module ClassicalCrypto::Cyphers
+	class FourSquare < Cypher
 
-class FourSquare < Cypher
+		include PureAlphabeticPlaintext
 
-	include Cypher::PureAlphabeticPlaintext
+		require_relative "foursquare/foursquare_key.rb"
 
-	require_relative "foursquare/foursquare_key.rb"
+		set_key_type_to FourSquareKey
 
-	set_key_type_to FourSquareKey
+		protected
 
-	protected
+		def encode(ptext)			
+			if ptext.length.even?
+				filledPtext = String.new ptext
+			else
+				filledPtext = ptext + ClassicalCrypto::Utils::GARBAGE_CH
+			end
 
-	def encode(ptext)			
-		if ptext.length.even?
-			filledPtext = String.new ptext
-		else
-			filledPtext = ptext + CypherTools::GARBAGE_CH
+			ctext = ClassicalCrypto::Utils::Text.substitute(filledPtext, 2) {|pair| key.table.sub_pair(pair)}
+
+			ctext
 		end
 
-		ctext = CypherTools::Text.substitute(filledPtext, 2) {|pair| key.table.sub_pair(pair)}
+		def decode(ctext)
+			raise ArgumentError, "cyphertext must be of even length" unless ctext.length.even?
+			ptext = ClassicalCrypto::Utils::Text.substitute(ctext, 2) {|pair| key.table.backsub_pair(pair)}
+		end
 
-		ctext
+
 	end
-
-	def decode(ctext)
-		raise ArgumentError, "cyphertext must be of even length" unless ctext.length.even?
-		ptext = CypherTools::Text.substitute(ctext, 2) {|pair| key.table.backsub_pair(pair)}
-	end
-
-
 end

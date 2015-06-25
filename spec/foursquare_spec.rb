@@ -1,5 +1,6 @@
 require_relative "./general_cypher_spec.rb"
-require_relative "#{CYPHERDIR}/foursquare.rb"
+
+FOURSQUARE = ClassicalCrypto::Cyphers::FourSquare
 
 pTextsCtextsAndNewPtextsByKey = {
 	["", ""] => [
@@ -13,7 +14,7 @@ pTextsCtextsAndNewPtextsByKey = {
 	]
 }
 
-run_general_cypher_spec_for	FourSquare, 
+run_general_cypher_spec_for	FOURSQUARE, 
 							pTextsCtextsAndNewPtextsByKey
 
-run_alphabetic_only_spec_for FourSquare
+run_alphabetic_only_spec_for FOURSQUARE

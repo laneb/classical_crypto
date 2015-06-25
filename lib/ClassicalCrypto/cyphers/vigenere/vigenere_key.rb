@@ -1,8 +1,8 @@
-require_relative "../../util/cyphertools.rb"
+require_relative "../../utils.rb"
 require_relative "../cypher.rb"
 
-class Vigenere	
-	class VigenereKey < Cypher::Key
+class ClassicalCrypto::Cyphers::Vigenere	
+	class VigenereKey < Key
 
 		RandLenMax = 16
 		RandLenMin = 8
@@ -10,13 +10,13 @@ class Vigenere
 		attr_reader :shift
 
 		def initialize(phrase)
-			@shift = CypherTools::Text.only_alpha(phrase).downcase
+			@shift = ClassicalCrypto::Utils::Text.only_alpha(phrase).downcase
 			super(@shift)
 		end
 
 		def self.random
 			randLength = RandLenMin + rand(RandLenMax - RandLenMin)
-			self.new(CypherTools::Text.garbage_alpha(randLength))
+			self.new(ClassicalCrypto::Utils::Text.garbage_alpha(randLength))
 		end
 		
 	end

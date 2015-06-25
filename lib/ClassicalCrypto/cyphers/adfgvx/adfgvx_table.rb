@@ -1,4 +1,4 @@
-require_relative "../../util/cyphertools.rb"
+require_relative "../../utils.rb"
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~AdfgvxTable:
@@ -7,9 +7,11 @@ require_relative "../../util/cyphertools.rb"
 #~~the rectangular transposition that follows. Intended for use in the
 #~~Adfgvx child class of Cypher.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+class ClassicalCrypto::Cyphers::Adfgvx
 
-class Adfgvx
-	class AdfgvxTable < CypherTools::Tables::AlnumTable
+	protected
+
+	class AdfgvxTable < ClassicalCrypto::Utils::Tables::AlnumTable
 
 		ADFGVX = "ADFGVX"	
 		

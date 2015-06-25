@@ -1,5 +1,6 @@
 require_relative "./general_cypher_spec.rb"
-require_relative "#{CYPHERDIR}/affine.rb"
+
+AFFINE = ClassicalCrypto::Cyphers::Affine
 
 pTextsCtextsAndNewPtextsByKey = {
 	[1, 0] => [
@@ -16,7 +17,7 @@ pTextsCtextsAndNewPtextsByKey = {
 
 }
 
-run_general_cypher_spec_for	Affine, 
+run_general_cypher_spec_for	AFFINE, 
 							pTextsCtextsAndNewPtextsByKey
 
-run_alphabetic_only_spec_for Affine
+run_alphabetic_only_spec_for AFFINE

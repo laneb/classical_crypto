@@ -1,4 +1,4 @@
-CYPHERDIR = "../lib/ClassicalCrypto/cyphers"
+require_relative "../lib/ClassicalCrypto.rb"
 
 def run_general_cypher_spec_for(cypherType, pTextCtextNewPtextByKey)
 

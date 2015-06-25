@@ -1,11 +1,11 @@
-require_relative "../../util/cyphertools.rb"
+require_relative "../../utils.rb"
 require_relative "../cypher.rb"
 
-class FourSquare
+class ClassicalCrypto::Cyphers::FourSquare
 
 	require_relative "foursquare_table.rb"
 
-	class FourSquareKey < Cypher::Key
+	class FourSquareKey < Key
 
 		attr_reader :table
 
@@ -22,7 +22,7 @@ class FourSquare
 
 
 		def self.random
-			self.new CypherTools::Text.jumble_alpha, CypherTools::Text.jumble_alpha
+			self.new ClassicalCrypto::Utils::Text.jumble_alpha, ClassicalCrypto::Utils::Text.jumble_alpha
 		end
 
 	end

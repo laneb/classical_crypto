@@ -1,4 +1,4 @@
-module CypherTools
+module ClassicalCrypto::Utils
 	module Tables
 
 		require_relative "tables/lookuptable.rb"

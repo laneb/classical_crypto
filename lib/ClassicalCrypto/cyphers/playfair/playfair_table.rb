@@ -1,7 +1,7 @@
-require_relative "../../util/cyphertools.rb"
+require_relative "../../utils.rb"
 
-class Playfair
-	class PlayfairTable < CypherTools::Tables::AlphaTable
+class ClassicalCrypto::Cyphers::Playfair
+	class PlayfairTable < ClassicalCrypto::Utils::Tables::AlphaTable
 
 		def sub_pair(pair)
 

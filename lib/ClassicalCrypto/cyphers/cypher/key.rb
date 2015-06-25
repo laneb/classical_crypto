@@ -1,4 +1,4 @@
-class Cypher
+class ClassicalCrypto::Cyphers::Cypher
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#~~Class: Key
 	#~~Constructor: Key.new(key_part, )

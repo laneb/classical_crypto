@@ -1,5 +1,6 @@
 require_relative "./general_cypher_spec.rb"
-require_relative "#{CYPHERDIR}/playfair.rb"
+
+PLAYFAIR = ClassicalCrypto::Cyphers::Playfair
 
 pTextsCtextsAndNewPtextsByKey = {
 	
@@ -21,7 +22,7 @@ pTextsCtextsAndNewPtextsByKey = {
 
 }
 
-run_general_cypher_spec_for	Playfair,  
+run_general_cypher_spec_for	PLAYFAIR,  
 							pTextsCtextsAndNewPtextsByKey
 
-run_alphabetic_only_spec_for Playfair
+run_alphabetic_only_spec_for PLAYFAIR

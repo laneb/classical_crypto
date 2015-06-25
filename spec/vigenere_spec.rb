@@ -1,5 +1,6 @@
 require_relative "./general_cypher_spec.rb"
-require_relative "#{CYPHERDIR}/vigenere.rb"
+
+VIGENERE = ClassicalCrypto::Cyphers::Vigenere
 
 pTextsCtextsAndNewPtextsByKey = {
 	"aaaaa" => [
@@ -16,8 +17,8 @@ pTextsCtextsAndNewPtextsByKey = {
 
 }
 
-run_general_cypher_spec_for	Vigenere, 
+run_general_cypher_spec_for	VIGENERE, 
 							pTextsCtextsAndNewPtextsByKey
 
 
-run_alphabetic_only_spec_for Vigenere
+run_alphabetic_only_spec_for VIGENERE

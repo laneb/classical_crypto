@@ -1,13 +1,13 @@
-require_relative "../../util/cyphertools.rb"
+require_relative "../../utils.rb"
 
-class FourSquare
+class ClassicalCrypto::Cyphers::FourSquare
 	class FourSquareTable
 
-		ALPHA = CypherTools::Tables::AlphaTable.new
+		ALPHA = ClassicalCrypto::Utils::Tables::AlphaTable.new
 
 		def initialize(phrase1, phrase2)
-			@code_table1 = CypherTools::Tables::AlphaTable.new(phrase1)
-			@code_table2 = CypherTools::Tables::AlphaTable.new(phrase2)
+			@code_table1 = ClassicalCrypto::Utils::Tables::AlphaTable.new(phrase1)
+			@code_table2 = ClassicalCrypto::Utils::Tables::AlphaTable.new(phrase2)
 		end
 
 

@@ -1,5 +1,6 @@
 require_relative "./general_cypher_spec.rb"
-require_relative "#{CYPHERDIR}/adfgvx.rb"
+
+ADFGVX = ClassicalCrypto::Cyphers::Adfgvx
 
 pTextsCtextsAndNewPtextsByKey = {
 	[ "", [0,1,2,3,4,5,6,7,8,9] ] => [
@@ -20,12 +21,12 @@ pTextsCtextsAndNewPtextsByKey = {
 
 
 
-run_general_cypher_spec_for	Adfgvx, 
+run_general_cypher_spec_for	ADFGVX, 
 							pTextsCtextsAndNewPtextsByKey
 
 
 
-RSpec.describe Adfgvx, "#encrypt" do 
+RSpec.describe ADFGVX, "#encrypt" do 
 	key = ["", [0,3,1,2,5,4,6,7]]
 
 	ptextsAndCtextPatterns = [
@@ -33,7 +34,7 @@ RSpec.describe Adfgvx, "#encrypt" do
 		%w[h3ll0'w0rld DVDVGAXVGDFXXF.DV.DF.XX.]
 	]
 
-	cyph = Adfgvx.new *key
+	cyph = ADFGVX.new *key
 
 	context "with key #{key.inspect}" do
 		ptextsAndCtextPatterns.each do |ptext, ctextPattern|
@@ -44,8 +45,8 @@ RSpec.describe Adfgvx, "#encrypt" do
 	end
 end
 
-RSpec.describe Adfgvx, "#decrypt" do
-	cyph = Adfgvx.random
+RSpec.describe ADFGVX, "#decrypt" do
+	cyph = ADFGVX.random
 
 	context "with cyphertext including characters besides ADFGVX" do
 		it "should raise an ArgumentError" do

@@ -1,6 +1,9 @@
-module CypherTools
+require "prime.rb"
+
+module ClassicalCrypto::Utils
 
 	module Math
+
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		#~~coprime?(num1, num2) #=> true or false

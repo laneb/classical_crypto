@@ -1,7 +1,7 @@
-module CypherTools
+module ClassicalCrypto::Utils
 
 	module Text
-			#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		#~~Method: rand_alpha  #=>  String
 		#
 		#~~Description: rand_alpha returns a pseudorandomly selected lower case alphabetic 
