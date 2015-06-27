@@ -51,9 +51,20 @@ module ClassicalCrypto::Utils
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~Method: alnum(text)  #=>  String
+		#~~Method: fill(str, numOfCharsToAdd)  #=>  String
 		#
-		#~~Description: alnum returns a copy of String :text: with non-alphabetic characters removed.
+		#~~Description: fill returns str appended with :numOfCharsToAdd: pseudorandom characters
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		def self.fill(str, numOfCharsToAdd)
+			str + garbage_alnum(numOfCharsToAdd)
+		end
+
+
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#~~Method: only_alpha(text)  #=>  String
+		#
+		#~~Description: alpha returns a copy of String :text: with non-alphabetic characters removed.
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		def self.only_alpha(text)
