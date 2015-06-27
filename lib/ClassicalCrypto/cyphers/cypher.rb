@@ -4,6 +4,9 @@ require_relative "../utils.rb"
 
 module ClassicalCrypto::Cyphers
 
+	ALPHA_ONLY_PTEXT = false
+	EVEN_LENGTH_CTEXT = false
+
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#~~Class: Cypher
 	#~~Constructor: Cyper.new(key_part, )
@@ -45,6 +48,9 @@ module ClassicalCrypto::Cyphers
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		def encrypt(ptext)
+
+			if ALPHA_ONLY_PTEXT and ptext.match /\d/ then raise ArgumentError, "plaintext may not include digits" end
+
 			encode(ClassicalCrypto::Utils::Text.only_alnum(ptext.downcase)).upcase
 		end 
 
@@ -62,6 +68,9 @@ module ClassicalCrypto::Cyphers
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		def decrypt(ctext)
+
+			if EVEN_LENGTH_CTEXT and ctext.odd? then raise ArgumentError, "cyphertext must be of even length" end
+
 			decode(ClassicalCrypto::Utils::Text.only_alnum(ctext.upcase)).downcase
 		end
 

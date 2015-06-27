@@ -25,7 +25,7 @@ module ClassicalCrypto::Cyphers
 			permLength = key.perm.length #must be even
 			substitutedTextLength = 2*ptext.length
 			numOfLettersToFill = ((permLength  -  (substitutedTextLength % permLength)) % permLength ) /2
-			filledPtext = ptext + ClassicalCrypto::Utils::Text.garbage_alnum(numOfLettersToFill) 
+			filledPtext = ClassicalCrypto::Utils::Text.fill ptext, numOfLettersToFill
 			substitutedText = ClassicalCrypto::Utils::Text.substitute(filledPtext) {|ch| key.table.sub_char(ch)}
 
 			ctext = ClassicalCrypto::Utils::Text.transpose(substitutedText, key.perm)
