@@ -2,15 +2,17 @@ require_relative "./cypher.rb"
 require_relative "../utils.rb"
 
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#~~Adfgvx
-#
-#~~Adfgvx is a subclass of Cypher which encrypts and decrypts messages according to
-#~~the rules of the ADFGVX system. Adfgvx is a child class of Cypher and adds no 
-#~~accessible methods.
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 module ClassicalCrypto::Cyphers
+
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Class: Adfgvx
+	#
+	#~~Description: Adfgvx is a subclass of Cypher which encrypts alphanumeric text 
+	#~~according to the algorithm of the ADFGVX cypher: https://en.wikipedia.org/wiki/ADFGVX_cipher 
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	class Adfgvx < Cypher
 
 		require_relative "adfgvx/adfgvx_key.rb"

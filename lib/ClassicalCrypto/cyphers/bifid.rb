@@ -2,6 +2,13 @@ require_relative "../utils.rb"
 
 module ClassicalCrypto::Cyphers
 
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Class: Bifid
+	#
+	#~~Description: Bifid is a subclass of Cypher which encrypts alphanumeric text 
+	#~~according to the algorithm of the bifid cypher: https://en.wikipedia.org/wiki/Bifid_cipher
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	class Bifid < Cypher
 
 		include PureAlphabeticPlaintext

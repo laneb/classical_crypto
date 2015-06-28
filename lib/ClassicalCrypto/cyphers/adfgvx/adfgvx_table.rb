@@ -1,15 +1,20 @@
 require_relative "../../utils.rb"
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#~~AdfgvxTable:
-#~~Handles the encryption/decryption processes which would conceptually
-#~~use a ADFGVX table, i.e. bialphabetic substitution. DOES NOT handle 
-#~~the rectangular transposition that follows. Intended for use in the
-#~~Adfgvx child class of Cypher.
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 class ClassicalCrypto::Cyphers::Adfgvx
 
 	protected
+
+
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Class: AdfgvxTable
+	#
+	#~~Description: AdfgvxTable is a 6x6 Polybius square which also implements substitution
+	#~~rules according to the algorithm of the ADFGVX cypher. 
+	#
+	#~~Constructor: AdfgvxTable.new(phrase)
+	#~~Initializes AdfgvxTable as an AlnumTable using the String :phrase:.
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	class AdfgvxTable < ClassicalCrypto::Utils::Tables::AlnumTable
 

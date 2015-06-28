@@ -4,6 +4,13 @@ require_relative "./cypher.rb"
 module ClassicalCrypto::Cyphers
 	class Playfair < Cypher	
 
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#~~Class: Playfair
+		#
+		#~~Description: Playfair is a subclass of Cypher which encrypts alphanumeric text 
+		#~~according to the algorithm of the Playfair cypher: https://en.wikipedia.org/wiki/Playfair_cipher
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 		include PureAlphabeticPlaintext
 
 		require_relative "playfair/playfair_key.rb"
@@ -29,6 +36,14 @@ module ClassicalCrypto::Cyphers
 
 
 		private
+
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#~~Method: insert_filler(ptext) #=> String
+		#
+		#~~Description: insert_filler returns the contents of ptext with a garbage character
+		#~~inserted to split up consecutive identical letters and such that the returned 
+		#~~String is of even length.
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		def insert_filler(ptext)
 			idx = 0

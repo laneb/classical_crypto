@@ -1,5 +1,12 @@
 module ClassicalCrypto
 
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Module: Utils
+	#
+	#~~Description: Utils is a namespace including the Math, Text, and Tables modules and
+	#~~several constants.
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	module Utils
 
 		GARBAGE_CH = "q"

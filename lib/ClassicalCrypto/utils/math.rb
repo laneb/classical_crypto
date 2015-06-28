@@ -2,6 +2,12 @@ require "prime.rb"
 
 module ClassicalCrypto::Utils
 
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Module: Cyphers
+	#
+	#~~Description: Math is a namespace including all math-related utility methods.
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	module Math
 
 

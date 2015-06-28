@@ -5,6 +5,19 @@ class ClassicalCrypto::Cyphers::Adfgvx
 
 	require_relative "adfgvx_table.rb"
 
+
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Class: AdfgvxKey
+	#
+	#~~Description: AdfgvxKey is a subclass of Key which stores key data for the
+	#~~Adfgvx cypher. 
+	#
+	#~~Constructor: AdfgvxKey.new(phrase, perumtation)
+	#~~Initializes an AlnumTable with String :phrase: and stores Array of Integers permutation,
+	#~~which specifies the column order for the transposition and must contain the integers
+	#~~betweeen 0 and its length (and only those integers).
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	class AdfgvxKey < Key
 	
 		attr_reader :table, :perm
@@ -27,9 +40,16 @@ class ClassicalCrypto::Cyphers::Adfgvx
 
 			@table = AdfgvxTable.new(phrase)
 			@perm = perm
-			super(@table,  @perm)
+			super(phrase,  perm)
 		end
 
+
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#~~Method: self.random #=> AdfgvxKey
+		#
+		#~~Description: returns an AdfgvxKey generated with randomly ordered permutation Array
+		#~~of random length betweeen 8 and 16 and and randomly orddered alphabet.
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		def self.random
 			permLen = 2*Random.rand( (MinPermLength/2)..(MaxPermLength/2) )

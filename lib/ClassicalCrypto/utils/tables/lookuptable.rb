@@ -5,10 +5,9 @@ module ClassicalCrypto::Utils::Tables
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#~~Class: LookUpTable
 	#
-	#~~Description: An indexed rectangular table which provides methods both to read from
-	#~~according to their indices and to find the index of entries according to their 
-	#~~values. LookUpTable is the backbone of the substitution tables for the Adfgvx, 
-	#~~Playfair, and Foursquare ciphers
+	#~~Description: An indexed rectangular table which provides methods to read from
+	#~~entries according to their indices and to find the index of entries according to their 
+	#~~values. LookUpTable is the backbone of the tables used in cyphers like ADFGVX and Playfair
 	#
 	#~~Constructor: LookUpTable.new(entries, width)
 	#~~Array :entries: specifies the entries which will fill the table. Integer :width:   

@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["lane.barlow@gmail.com"]
 
   spec.summary       = "A gem for classical cryptography!"
-  spec.description   = "A collection of cypher classes and utilities for encryption through classical cyptographic algorithms."
+  spec.description   = "A collection of cypher classes and utilities for encryption andd deccryption through classical cyptographic algorithms."
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or

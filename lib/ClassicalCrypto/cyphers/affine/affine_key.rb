@@ -2,6 +2,19 @@ require_relative "../../utils.rb"
 require_relative "../cypher.rb"
 
 class ClassicalCrypto::Cyphers::Affine
+
+
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Class: AffineKey
+	#
+	#~~Description: AffineKey is a subclass of Key which stores key data for the
+	#~~Affine cypher. 
+	#
+	#~~Constructor: AffineKey.new(coefficient, constant)
+	#~~Stores Integers :coefficient: and constant, which refer to the coefficient and
+	#~~and constant of the Affine substitution function. 
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	class AffineKey < Key
 
 		MAX_RAND_COEFF = 100
@@ -23,6 +36,14 @@ class ClassicalCrypto::Cyphers::Affine
 			@inv_coeff = ClassicalCrypto::Utils::Math.mod_inv(coeff, ALPHA_MODULUS)
 			super(@coeff, @const)
 		end
+
+
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#~~Method: self.random #=> AffineKey
+		#
+		#~~Description: returns an AffineKey generated with random integer coefficient and
+		#~~constant.
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		def self.random
 			

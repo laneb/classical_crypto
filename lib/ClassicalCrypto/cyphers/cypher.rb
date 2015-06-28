@@ -9,11 +9,14 @@ module ClassicalCrypto::Cyphers
 
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#~~Class: Cypher
-	#~~Constructor: Cyper.new(key_part, )
 	#
 	#~~Description: Cypher is a virtual class to be implemented by the cypher classes in this library
 	#~~It outlines the functionality expected of each system and includes every method that 
 	#~~will be visible to the user. Cypher also manages case and whitespace problems.
+	#
+	#~~Constructor: Cypher.new(keyDatum, )
+	#~~Sets key data to data specified in the arguments. Will raise error if data does not 
+	#~~match data expected by the key.
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	protected
@@ -28,9 +31,9 @@ module ClassicalCrypto::Cyphers
 
 		def initialize(*key_data)
 			if key_data.empty?
-				@key = self.class.keyType.random
+				@key = self.class.key_type.random
 			else 
-				@key = self.class.keyType.new(*key_data)
+				@key = self.class.key_type.new(*key_data)
 			end
 		end
 
@@ -77,12 +80,26 @@ module ClassicalCrypto::Cyphers
 
 		protected
 
+
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#~~Method: self.set_key_type_to(keyType)
+		#
+		#~~Description: set_key_type_to sets the class of key for use with the receiver. Use case
+		#~~is in the definition of subclasses of Cypher.
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 		def self.set_key_type_to(keyType)
 			@keyType = keyType
 		end
 
 
-		def self.keyType
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#~~Method: self.key_type
+		#
+		#~~Description: key_type returns the class of key specified through set_key_type_to.
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		def self.key_type
 			@keyType
 		end
 		

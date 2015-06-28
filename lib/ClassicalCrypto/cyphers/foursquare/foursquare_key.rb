@@ -5,6 +5,17 @@ class ClassicalCrypto::Cyphers::FourSquare
 
 	require_relative "foursquare_table.rb"
 
+
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Class: FourSquareKey
+	#
+	#~~Description: FourSquareKey is a subclass of Key which stores key data for the
+	#~~FourSquare cypher. 
+	#
+	#~~Constructor: FourSquareKey.new(phrase1, phrase2)
+	#~~Initializes a FourSquareTable with :phrase1: and :phrase2:
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	class FourSquareKey < Key
 
 		attr_reader :table
@@ -20,6 +31,13 @@ class ClassicalCrypto::Cyphers::FourSquare
 			super(@table)
 		end	
 
+
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#~~Method: self.random #=> FourSquareKey
+		#
+		#~~Description: returns a FourSquareKey generated with 2 randomly ordered alphabets
+		#~~as phrases.
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		def self.random
 			self.new ClassicalCrypto::Utils::Text.jumble_alpha, ClassicalCrypto::Utils::Text.jumble_alpha

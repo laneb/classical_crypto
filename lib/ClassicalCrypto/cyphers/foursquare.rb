@@ -6,9 +6,18 @@ require_relative "./cypher.rb"
 
 
 module ClassicalCrypto::Cyphers
+
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Class: FourSquare
+	#
+	#~~Description: FourSquare is a subclass of Cypher which encrypts alphabetic text according
+	#~~to the algorithm of the Four-square cypher: https://en.wikipedia.org/wiki/Four-square_cipher.
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	class FourSquare < Cypher
 
 		include PureAlphabeticPlaintext
+		include EvenLengthCyphertext
 
 		require_relative "foursquare/foursquare_key.rb"
 
@@ -29,8 +38,9 @@ module ClassicalCrypto::Cyphers
 		end
 
 		def decode(ctext)
-			raise ArgumentError, "cyphertext must be of even length" unless ctext.length.even?
 			ptext = ClassicalCrypto::Utils::Text.substitute(ctext, 2) {|pair| key.table.backsub_pair(pair)}
+
+			ptext
 		end
 
 

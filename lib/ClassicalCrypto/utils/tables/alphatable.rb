@@ -2,6 +2,19 @@ module ClassicalCrypto::Utils::Tables
 
 	require_relative "lookuptable.rb"
 
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Class: AlphaTable
+	#
+	#~~Description: AlphaTable is a 5x5 LookUpTable whose 25 entries include A-Z (and only A-Z).
+	#~~Since A-Z includes 26 letters, I and J are indexed together, as is common in Polybius
+	#~~squares.
+	#
+	#~~Constructor: AlphaTable.new(phrase = "")
+	#~~Table will be initialized by writing the contents of phrase from left to right, top to
+	#~~bottom of the table, ignoring duplicate entries. J will be treated as a duplicate of I.
+	#~~Then the remaining letters of the alphabet will be written in in the same manner.
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	class AlphaTable < LookUpTable
 
 		WIDTH = 5
@@ -31,6 +44,13 @@ module ClassicalCrypto::Utils::Tables
 		end
 
 		private
+
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#~~Method: index(ch) #-> Integer
+		#
+		#~~Description: Returns the index of :ch: in the Array :@entries:, or nil if :ch: is not 
+		#~~included in :@entries:. Overloaded to account for I,J occuring in the same entry.
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		def index(ch)
 			search = Proc.new {|entry, index| if entry.include? ch then return index end}

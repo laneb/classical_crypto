@@ -2,18 +2,20 @@ module ClassicalCrypto::Utils::Tables
 
 	require_relative "lookuptable.rb"
 
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#~~Class: AlphaTable
+	#
+	#~~Description: AlphaTable is a 5x5 LookUpTable whose 26 entries include A-Z09 (and only A-Z0-9).
+	#
+	#~~Constructor: AlphaTable.new(phrase = "")
+	#~~Table will be initialized by writing the contents of :phrase: from left to right, top to
+	#~~bottom of the table, ignoring duplicate entries. Then the remaining alphanumeric characters 
+	#~~will be written in in the same manner.
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	class AlnumTable < LookUpTable
 
 		WIDTH = 6
-
-
-		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~initialize(str)
-		#
-		#~~initialize creates the array of characters @entries used to simulate the ADFGVX table.
-		#~~@entries will always be initialized to include all 26 lower case alphabetical characters
-		#~~and 10 digits.
-		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		
 		def initialize(phrase = "")
 			unless phrase.is_a? String
