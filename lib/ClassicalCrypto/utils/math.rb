@@ -2,6 +2,7 @@ require "prime.rb"
 
 module ClassicalCrypto::Utils
 
+
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#~~Module: Cyphers
 	#
@@ -12,28 +13,34 @@ module ClassicalCrypto::Utils
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~coprime?(num1, num2) #=> true or false
+		#~~Method: self.coprime?(num1, num2) #=> true or false
 		#
-		#~~Returns true if Integers :num:1 and :num2: are coprime, and false otherwise.
+		#~~Description: Returns true if Integers :num:1 and :num2: are coprime, and false otherwise.
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 		def self.coprime?(num1, num2)
+			numsShareFactor = false
+
+
 			factorlist1 = Prime.prime_division(num1)
 
 			factorlist1.each do |pair|
 				factor = pair.first
-				if self.divides?(factor, num2) then return false end
+				if self.divides?(factor, num2) 
+					numsShareFactor = true
+					break
+				end
 			end
 
-			true
+
+			!numsShareFactor
 		end
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~divides?(divisor, number) #=> true or false
+		#~~Method: self.divides?(divisor, number) #=> true or false
 		#
-		#~~Returns true if Integer :divisor: divides Integer :number:, and false otherwise.
+		#~~Description: Returns true if Integer :divisor: divides Integer :number:, and false otherwise.
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		def self.divides?(divisor, number)
@@ -42,7 +49,7 @@ module ClassicalCrypto::Utils
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~Method: mod_inv?(num, mod) #=> Integer
+		#~~Method: self.mod_inv?(num, mod) #=> Integer
 		#
 		#~~Description: mod_inv returns the modular inverse of Integer :int: with modulus :mod:
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -55,7 +62,7 @@ module ClassicalCrypto::Utils
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~Method: berklekamp(r1, r2) #=> Integer
+		#~~Method: self.berklekamp(r1, r2) #=> Integer
 		#
 		#~~Description: berlekamp returns the inverse of :r1: modulus :r2: by applying the
 		#~~Berlekamp variation on the extended Euclidean algorithm
@@ -72,5 +79,9 @@ module ClassicalCrypto::Utils
 				berlekamp(r2, r3, p2, p3)
 			end
 		end
+
+
 	end
+
+
 end

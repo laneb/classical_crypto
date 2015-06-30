@@ -20,8 +20,6 @@ class ClassicalCrypto::Cyphers::FourSquare
 		def initialize(phrase1, phrase2)
 			@code_table1 = ClassicalCrypto::Utils::Tables::AlphaTable.new(phrase1)
 			@code_table2 = ClassicalCrypto::Utils::Tables::AlphaTable.new(phrase2)
-
-			super phrase1, phrase2
 		end
 
 
@@ -51,6 +49,7 @@ class ClassicalCrypto::Cyphers::FourSquare
 			ch1, ch2 = pair[0].downcase, pair[1].downcase
 
 			x1, y1, x2, y2 = *@code_table1.coord(ch1), *@code_table2.coord(ch2)
+			
 			ALPHA.entry(x2, y1) + ALPHA.entry(x1, y2)
 		end
 

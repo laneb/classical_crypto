@@ -28,7 +28,7 @@ class ClassicalCrypto::Cyphers::FourSquare
 			end
 
 			@table = FourSquareTable.new(phrase1, phrase2)
-			super(@table)
+			super phrase1, phrase2
 		end	
 
 

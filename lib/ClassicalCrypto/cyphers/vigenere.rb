@@ -3,11 +3,15 @@ require_relative "../utils.rb"
 
 
 module ClassicalCrypto::Cyphers
+
+
 	class Vigenere < Cypher
+
+
 		require_relative "vigenere/vigenere_key.rb"
-		
 		set_key_type_to VigenereKey
 		
+
 		include PureAlphabeticPlaintext
 
 		
@@ -49,5 +53,8 @@ module ClassicalCrypto::Cyphers
 			end
 		end	
 
+
 	end
+
+
 end

@@ -1,13 +1,15 @@
 module ClassicalCrypto::Utils
 
+
 	module Text
+
+
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		#~~Method: rand_alpha  #=>  String
 		#
 		#~~Description: rand_alpha returns a pseudorandomly selected lower case alphabetic 
 		#~~character.
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 		def self.rand_alpha
 			ALPHABET_ARY.sample
@@ -79,7 +81,6 @@ module ClassicalCrypto::Utils
 		#~~removed.
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 		def self.only_alnum(text)
 			text.gsub /[^0-9A-Za-z]/, ""
 		end
@@ -93,9 +94,14 @@ module ClassicalCrypto::Utils
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		def self.unique(text)
-			list = String.new
-			text.each_char {|ch| if !list.include? ch then list << ch end}
-			
+			list = ""
+
+			text.each_char do |ch| 
+				unless list.include? ch 
+					list << ch
+				end
+			end
+
 			list 
 		end
 
@@ -113,7 +119,7 @@ module ClassicalCrypto::Utils
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~Method: jumble_alpha #=> String
+		#~~Method: self.jumble_alpha #=> String
 		#
 		#~~Description: jumble_alpba returns a String containing the lower case letters of the 
 		#~~alphabet and the digits 0-9 all in a random order.
@@ -125,7 +131,7 @@ module ClassicalCrypto::Utils
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~Method: rand_perm(size) #=> Array
+		#~~Method: self.rand_perm(size) #=> Array
 		#
 		#~~Description: rand_perm returns an Array of length :size: containing the number from 0 up 
 		#~~to :size: in random order.
@@ -137,13 +143,14 @@ module ClassicalCrypto::Utils
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~Method: shift_alpha(alpha, shift)  #=>  String
+		#~~Method: self.shift_alpha(alpha, shift)  #=>  String
 		#
 		#~~Description: shift_alpha returns character :alpha: shiftedd - as in a caesar shift - by
 		#~~magnitude of Integer :shift:
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 
 		def self.shift_alpha(alpha, shift)
+
 			if ('a'..'z').include? alpha #alpha is lower
 				aMag = 'a'.ord 				#aMag stores the ASCII encoding for 'a' if alpha is lower or 'A' if alpha is upper 
 			elsif ('A'..'Z').include? alpha # alpha is capital
@@ -155,19 +162,21 @@ module ClassicalCrypto::Utils
 			raise ArgumentError, "no implicit coercion of #{shift.class} to Integer" unless shift.is_a? Integer
 
 			
-			(((alpha.ord + shift - aMag) % 26) + aMag).chr
+			shiftedAlpha = (((alpha.ord + shift - aMag) % 26) + aMag).chr
+
+			shiftedAlpha
 		end
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~Method: caesar(text, shift_mag)  #=>  String
+		#~~Method: self.caesar(text, shift_mag)  #=>  String
 		#
 		#~~Description: caesar returns a caesar-shift of magnitude :shift_mag: of :text:. 
 		#~~:shift_mag: may be either an Integer or a character - i.e. an "a"-shift, "b"-shift, et.
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 
+
 		def self.caesar(text, shift_mag)
-			newText = ""
 
 			if shift_mag.is_a? String
 				shift_num = shift_mag.downcase.ord - "a".ord 
@@ -176,17 +185,19 @@ module ClassicalCrypto::Utils
 			else 
 				raise ArgumentError, "no implicit coercion of #{shift_mag.class} to String"
 			end
-			
-			#shift_alpha will catch if characters of :text: are not all alphabetic
 
+
+			newText = ""
+			#shift_alpha will catch if characters of :text: are not all alphabetic
 			text.each_char.map {|ch| newText << shift_alpha(ch, shift_num)}
 			
+
 			newText
 		end
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~Method: substitute(text, interval = 1, &rule) #=> String
+		#~~Method: self.substitute(text, interval = 1, &rule) #=> String
 		#
 		#~~Description: Substitute employs :rule: (a lambda or block which expects a string and   
 		#~~returns a string) to encrypt substrings of the interval into arbitrary subtstrings,  
@@ -205,7 +216,7 @@ module ClassicalCrypto::Utils
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~Method: transpose(text, perm)  #=>  String
+		#~~Method: self.transpose(text, perm)  #=>  String
 		#
 		#~~Description: Transpose returns a rectangular transposition of :text:, in which the
 		#~~columns are reordered according to the order in Array :perm:. :perm: must include all
@@ -228,6 +239,7 @@ module ClassicalCrypto::Utils
 				end
 			end
 
+
 			newText = ""
 			rLen = perm.length		
 			cLen = text.length / rLen
@@ -238,12 +250,13 @@ module ClassicalCrypto::Utils
 				end
 			end
 
+
 			newText	
 		end
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		#~~Method: transpose(text, perm)  #=>  String
+		#~~Method: self.transpose(text, perm)  #=>  String
 		#
 		#~~Description: Transpose returns an inverted rectangular transposition of :text:, in 
 		#~~which the columns are ASSUMED TO HAVE BEEN reordered according to the order in Array  
@@ -267,6 +280,7 @@ module ClassicalCrypto::Utils
 				end
 			end
 
+
 			newText = ""
 			cLen = text.length / perm.length
 
@@ -276,7 +290,12 @@ module ClassicalCrypto::Utils
 				end
 			end
 
+
 			newText
 		end
+
+
 	end
+
+
 end

@@ -1,6 +1,8 @@
 module ClassicalCrypto::Utils::Tables
 
+
 	require_relative "lookuptable.rb"
+
 
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#~~Class: AlphaTable
@@ -15,9 +17,12 @@ module ClassicalCrypto::Utils::Tables
 
 	class AlnumTable < LookUpTable
 
+
 		WIDTH = 6
 		
+		
 		def initialize(phrase = "")
+
 			unless phrase.is_a? String
 				raise TypeError, "no implicit coercion of #{phrase.class} to String"
 			end
@@ -30,5 +35,8 @@ module ClassicalCrypto::Utils::Tables
 			super(entries, WIDTH)
 		end	
 
+
 	end
+
+
 end

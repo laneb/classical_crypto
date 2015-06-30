@@ -39,7 +39,7 @@ class ClassicalCrypto::Cyphers::Playfair
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		#~~Method: backsub_pair(pair) #=> String
 		#
-		#~~Description: backsub_pair performs a bialpabetic substitution on the String :pair: of
+		#~~Description: backsub_pair returns a bialpabetic substitution of the String :pair: of
 		#~~length 2 using the table according to the inverse of the substitution algorithm 
 		#~~of the Playfair cipher.
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

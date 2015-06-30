@@ -1,4 +1,6 @@
 class ClassicalCrypto::Cyphers::Cypher
+
+
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#~~Class: Key
 	#~~Constructor: Key.new(key_part, )
@@ -10,10 +12,16 @@ class ClassicalCrypto::Cyphers::Cypher
 
 	class Key
 
+
 		attr_reader :data
+
 
 		def initialize(*data)
 			@data = data				
 		end
+
+
 	end
+
+	
 end

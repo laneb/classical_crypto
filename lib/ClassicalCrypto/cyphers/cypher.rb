@@ -5,7 +5,10 @@ require_relative "../utils.rb"
 module ClassicalCrypto::Cyphers
 
 	ALPHA_ONLY_PTEXT = false
+	require_relative "cypher/pure_alphabetic_plaintext.rb"
+
 	EVEN_LENGTH_CTEXT = false
+	require_relative "cypher/even_length_cyphertext.rb"
 
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#~~Class: Cypher
@@ -58,7 +61,7 @@ module ClassicalCrypto::Cyphers
 		end 
 
 
-		require_relative "cypher/pure_alphabetic_plaintext.rb"
+		
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

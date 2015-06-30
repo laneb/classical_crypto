@@ -1,6 +1,9 @@
 module ClassicalCrypto::Utils::Tables
 
+
+
 	protected
+
 
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#~~Class: LookUpTable
@@ -15,10 +18,11 @@ module ClassicalCrypto::Utils::Tables
 	#~~:entries:. Entries will be filled into table left to right and wrap down.
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 	class LookUpTable
 
+
 		attr_reader :width, :height
+		
 
 		def initialize(entries, width)
 
@@ -27,7 +31,7 @@ module ClassicalCrypto::Utils::Tables
 			end
 			
 			unless width.is_a? Integer
-				raise TypeError, "no implicit coercion of #{entries.inspect}:#{entries.class} to Integer" 
+				raise TypeError, "no implicit coercion of #{width.class} to Integer" 
 			end
 			
 			unless ClassicalCrypto::Utils::Math.divides? width, entries.length
@@ -90,7 +94,9 @@ module ClassicalCrypto::Utils::Tables
 		end
 
 
+
 		private
+
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		#~~Method: index(entry)  #=>  Array
@@ -102,5 +108,8 @@ module ClassicalCrypto::Utils::Tables
 			@entries.index(entryToFind)
 		end
 
+
 	end
+
+
 end
