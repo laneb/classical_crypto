@@ -4,20 +4,20 @@ PLAYFAIR = ClassicalCrypto::Cyphers::Playfair
 
 pTextsCtextsAndNewPtextsByKey = {
 	
-	"" => [
-		%w[hello\ world KCQVMPYMQMAT helqloworldq]
+	[""] => [
+		%w[helloworld KCQVMPYMQMAT helqloworldq]
 	],
 
-	"abcdefghijklmnopqrstuvwxyz" => [
-		%w[hello\ world KCQVMPYMQMAT helqloworldq]
+	["abcdefghijklmnopqrstuvwxyz"] => [
+		%w[helloworld KCQVMPYMQMAT helqloworldq]
 	],
 
-	"zyxwvutsrqponmlkjihgfedcba" => [
-		%w[hello\ world KCFLPNYMQMAT helqloworldq]
+	["zyxwvutsrqponmlkjihgfedcba"] => [
+		%w[helloworld KCFLPNYMQMAT helqloworldq]
 	],
 
-	"playfairriafyalp" => [
-		%w[hello\ world KGAORVVQGRBT helqloworldq]
+	["playfairriafyalp"] => [
+		%w[helloworld KGAORVVQGRBT helqloworldq]
 	]
 
 }
@@ -25,4 +25,3 @@ pTextsCtextsAndNewPtextsByKey = {
 run_general_cypher_spec_for	PLAYFAIR,  
 							pTextsCtextsAndNewPtextsByKey
 
-run_alphabetic_only_spec_for PLAYFAIR

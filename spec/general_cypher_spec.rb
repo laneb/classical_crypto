@@ -1,67 +1,54 @@
-require_relative "../lib/ClassicalCrypto.rb"
+require_relative "../lib/classical_crypto.rb"
 
-def run_general_cypher_spec_for(cypherType, pTextCtextNewPtextByKey)
+def run_general_cypher_spec_for(cypher_type, pTextCtextNewPtextByKey)
 
 
-	RSpec.describe cypherType, "#encrypt" do
-		pTextCtextNewPtextByKey.each do |sampleKeyData, samplePtextsCtextsNewPtexts|
-			context "with key #{sampleKeyData.inspect}" do
-				cyph = cypherType.new *sampleKeyData
+	RSpec.describe cypher_type do
 
-				context "plaintext is empty" do
-					it "should return an empty string" do
-						expect(cyph.encrypt "").to eq ""
-					end
-				end
+		describe "#encrypt" do
+			pTextCtextNewPtextByKey.each do |sampleKeyData, samplePtextsCtextsNewPtexts|
+				context "with key #{sampleKeyData.inspect}" do
+					cypher = cypher_type.new *sampleKeyData
 
-				samplePtextsCtextsNewPtexts.each do |samplePtext, sampleCtext, newSamplePtext|
-					it "should return upper case text without whitepsace" do
-						expect(cyph.encrypt samplePtext).not_to match /[\Wa-z]/
+					context "plaintext is empty" do
+						it "should return an empty string" do
+							expect(cypher.encrypt "").to eq ""
+						end
 					end
 
-					it "should encrypt #{samplePtext.inspect} to #{sampleCtext.inspect}" do
-						expect(cyph.encrypt samplePtext).to eq sampleCtext
-					end
-				end
-			end
-		end
-	end
+					samplePtextsCtextsNewPtexts.each do |samplePtext, sampleCtext, newSamplePtext|
+						encrypted_text = cypher.encrypt samplePtext
 
-
-	RSpec.describe cypherType, "#decrypt" do
-		pTextCtextNewPtextByKey.each do |sampleKeyData, samplePtextsCtextsNewPtexts|
-			context "with key #{sampleKeyData.inspect}" do
-				cyph = cypherType.new *sampleKeyData
-
-				context "plaintext is empty" do
-					it "should return an empty string" do
-						expect(cyph.decrypt "").to eq ""
-					end
-				end
-
-				samplePtextsCtextsNewPtexts.each do |samplePtext, sampleCtext, newSamplePtext|
-					it "should return lower case text without whitepsace" do
-						expect(cyph.decrypt sampleCtext).not_to match /[\WA-Z]/
-					end
-
-					it "should encrypt #{sampleCtext.inspect} to #{newSamplePtext.inspect}" do
-						expect(cyph.decrypt sampleCtext).to eq newSamplePtext
+						it "should encrypt #{samplePtext.inspect} to #{sampleCtext.inspect}" do
+							expect(encrypted_text).to eq sampleCtext
+						end
 					end
 				end
 			end
 		end
-	end
-end
 
 
-def run_alphabetic_only_spec_for(cypherType)
-	cyph = cypherType.random
-	
-	RSpec.describe cypherType, "#encrypt" do
-		context "plaintext includes numbers" do
-			it "should raise an ArgumentError" do
-				expect {raise ArgumentError}.to raise_error ArgumentError
+		describe "#decrypt" do
+			pTextCtextNewPtextByKey.each do |sampleKeyData, samplePtextsCtextsNewPtexts|
+				context "with key #{sampleKeyData.inspect}" do
+					cypher = cypher_type.new *sampleKeyData
+ 
+					context "plaintext is empty" do
+						it "should return an empty string" do
+							expect(cypher.decrypt "").to eq ""
+						end
+					end
+
+					samplePtextsCtextsNewPtexts.each do |samplePtext, sampleCtext, newSamplePtext|
+						decrypted_text = cypher.decrypt sampleCtext
+
+						it "should encrypt #{sampleCtext.inspect} to #{newSamplePtext.inspect}" do
+							expect(decrypted_text).to eq newSamplePtext
+						end
+					end
+				end
 			end
 		end
 	end
 end
+

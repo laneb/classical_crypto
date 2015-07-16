@@ -3,22 +3,19 @@ require_relative "./general_cypher_spec.rb"
 VIGENERE = ClassicalCrypto::Cyphers::Vigenere
 
 pTextsCtextsAndNewPtextsByKey = {
-	"aaaaa" => [
-		%w[hello\ world HELLOWORLD helloworld],
+	["aaaaa"] => [
+		%w[helloworld HELLOWORLD helloworld],
 	],
 
-	"abc" => [
-		%w[hello\ world HFNLPYOSND helloworld],
+	["abc"] => [
+		%w[helloworld HFNLPYOSND helloworld],
 	],
 
-	"lqnvaekfmn" => [ 
-		%w[hello\ world SUYGOAYWXQ helloworld],
+	["lqnvaekfmn"] => [ 
+		%w[helloworld SUYGOAYWXQ helloworld],
 	]
 
 }
 
 run_general_cypher_spec_for	VIGENERE, 
 							pTextsCtextsAndNewPtextsByKey
-
-
-run_alphabetic_only_spec_for VIGENERE
