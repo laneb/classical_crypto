@@ -21,13 +21,20 @@ class ClassicalCrypto::Cyphers::RectangularTransposition
 		MinPermLength = 8
 
 		def initialize(perm)
-			raise TypeError, "no implicit coercion of #{perm.class} to Array" unless perm.is_a? Array
+			unless perm.is_a? Array
+				raise TypeError, "no implicit coercion of #{perm.class} to Array"
+			end
 			
+			unless 0.upto(perm.length - 1).all? {|num| perm.include? num}
+				raise ArgumentError, "permutation Array must include all nonzero integers less than its length"
+			end
+
 			@perm = perm
 			@period = perm.length
 			
 			super perm
 		end
+
 
 
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,5 +1,3 @@
-require_relative "./general_cypher_spec.rb"
-
 RECTANGULAR_TRANSPOSITION = ClassicalCrypto::Cyphers::RectangularTransposition
 
 pTextsCtextsAndNewPtextsByKey = {
@@ -12,6 +10,17 @@ run_general_cypher_spec_for	RECTANGULAR_TRANSPOSITION,
 							pTextsCtextsAndNewPtextsByKey
 
 RSpec.describe RECTANGULAR_TRANSPOSITION do
+
+  describe "#new" do
+    context "permutation array  does not include all digits less than its length" do
+
+      permutation = [2,4,1,9,7,0,3,8,6,10]
+
+      it "should raise an ArgumentError" do
+        expect {RECTANGULAR_TRANSPOSITION.new permutation}.to raise_error ArgumentError
+      end
+    end
+  end
   
   describe "#encrypt" do
     

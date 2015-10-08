@@ -1,5 +1,3 @@
-require_relative "./general_cypher_spec.rb"
-
 FOURSQUARE = ClassicalCrypto::Cyphers::FourSquare
 
 pTextsCtextsAndNewPtextsByKey = {

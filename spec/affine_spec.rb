@@ -1,5 +1,3 @@
-require_relative "./general_cypher_spec.rb"
-
 AFFINE = ClassicalCrypto::Cyphers::Affine
 
 pTextsCtextsAndNewPtextsByKey = {

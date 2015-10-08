@@ -1,5 +1,3 @@
-require_relative "../lib/classical_crypto.rb"
-
 def run_general_cypher_spec_for(cypher_type, pTextCtextNewPtextByKey)
 
 

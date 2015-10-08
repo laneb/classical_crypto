@@ -16,7 +16,7 @@ module ClassicalCrypto::Cyphers
 		@key_type = BifidKey
 
 		@plaintext_alphabet = "abcdefghijklmnopqrstuvwxyz"
-		@cyphertext_alphabet = "abcdefghijklmnopqrstuvwxyz"
+		@cyphertext_alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 		protected
 
@@ -35,7 +35,7 @@ module ClassicalCrypto::Cyphers
 		def _decrypt_(ctext)
 
 			if ctext.length.odd?  
-				raise ArgumentError, "cyphertext must be of odd length"
+				raise ArgumentError, "cyphertext must be of even length"
 			end
 			
 			aryOfFracionatedCoordPairs = coordinate_array_from_text ctext

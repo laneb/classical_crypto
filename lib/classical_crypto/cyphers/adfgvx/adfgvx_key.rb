@@ -38,6 +38,11 @@ class ClassicalCrypto::Cyphers::Adfgvx
 				raise ArgumentError, "permutation Array must be of even length"
 			end
 
+			unless 0.upto(perm.length - 1).all? {|num| perm.include? num}
+				raise ArgumentError, "permutation Array must include all nonzero integers less than its length"
+			end
+
+
 			@table = AdfgvxTable.new(phrase)
 			@perm = perm
 			@period = perm.length
