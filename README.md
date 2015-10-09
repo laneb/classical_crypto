@@ -1,8 +1,20 @@
 # ClassicalCrypto
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ClassicalCrypto`. To experiment with that code, run `bin/console` for an interactive prompt.
+ClassicalCrypto is a gem for encrypting and decrypting text using classical cryptographic algorithms. Included are a variety of cyphers as well as utilities to generate random keys for each.
 
-TODO: Delete this and the text above, and describe your gem
+Note that all classical cyphers are long-since broken, so they are vulnerable to known probabilistic attacks. This module is not to be used for practical secrecy. It is for educational and novelty purposes only.
+
+ClassicalCrypto currently implements:
+ADFGVX
+Affine
+Bifid
+Caesar
+Four-Square
+Playfair
+Vigenere
+
+Coming features: tools for probabilistic analysis of cyphertext.
+
 
 ## Installation
 
@@ -20,15 +32,17 @@ Or install it yourself as:
 
     $ gem install ClassicalCrypto
 
+
 ## Usage
 
-TODO: Write usage instructions here
+e.g.,
 
-## Development
+include "vigenere"
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+cypher = Vigenere.new
+plaintext = "HELLO WORLD"
+cyphertext = cypher.encrypt(plaintext)
+decoded_text = cypher.decrypt(cyphertext)
 
 ## Contributing
 
