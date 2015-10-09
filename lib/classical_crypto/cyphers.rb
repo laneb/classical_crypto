@@ -7,18 +7,21 @@ module ClassicalCrypto
 	#~~Description: Cyphers is a namespace for all cypher classes.
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+
 	module Cyphers
 
-
-		require_relative "cyphers/adfgvx.rb"
-		require_relative "cyphers/affine.rb"
-		require_relative "cyphers/bifid.rb"
-		require_relative "cyphers/caesar.rb"
-		require_relative "cyphers/four_square.rb"
-		require_relative "cyphers/playfair.rb"
-		require_relative "cyphers/rectangular_transposition.rb"
-		require_relative "cyphers/vigenere.rb"
-
+		files_to_include = %w[
+			adfgvx.rb
+			affine.rb
+			caesar.rb
+			four_square.rb
+			playfair.rb
+			rectangular_transposition.rb
+			vigenere.rb
+		]
+		
+		files_to_include.each {|file_name| require_relative "cyphers/#{file_name}"}
 
 	end
 
